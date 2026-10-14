@@ -1,0 +1,26 @@
+.data-format-converter .dfc-preview {
+	padding: var(--size-4-3);
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+	border-radius: var(--radius-m);
+	max-height: 24vh;
+	overflow: auto;
+	white-space: pre-wrap;
+	font-family: var(--font-monospace);
+	font-size: var(--font-smaller);
+}
+
+.data-format-converter .dfc-warning {
+	color: var(--text-warning);
+}
+
+.data-format-converter .dfc-status {
+	white-space: pre-wrap;
+	color: var(--text-normal);
+}
+
+.data-format-converter .dfc-block-list,
+.data-format-converter .dfc-batch-preview {
+	max-height: 30vh;
+	overflow: auto;
+}
