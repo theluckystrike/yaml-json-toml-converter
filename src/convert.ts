@@ -149,7 +149,8 @@ export function convert(text: string, source: Format, target: Format): { text: s
 	const data = parseData(text, source);
 	checkData(data, target);
 	if (target === 'toml' && (data === null || typeof data !== 'object' || Array.isArray(data))) throw new Error('$: TOML requires an object at the root.');
-	const output = target === 'json' ? JSON.stringify(data, null, 2) : target === 'yaml' ? stringifyYaml(data) : stringifyToml(data as Parameters<typeof stringifyToml>[0]);
+	// smol-toml 1.9 adds a final newline; keep the existing preview output.
+	const output = target === 'json' ? JSON.stringify(data, null, 2) : target === 'yaml' ? stringifyYaml(data) : stringifyToml(data as Parameters<typeof stringifyToml>[0]).replace(/\n$/, '');
 	if (!equalData(data, target === 'toml' ? parseToml(output) : parseData(output, target))) throw new Error('$: Output changes the data. Conversion was blocked.');
 	return { text: output, data, warning: COMMENT_WARNING };
 }

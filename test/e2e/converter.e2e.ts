@@ -51,7 +51,16 @@ describe('Data Format Converter in the editor', function () {
 		['TOML underflow', 'n = 1e-999', 'toml', 'json', 'underflows'],
 		['TOML negative zero', 'n = -0', 'toml', 'json', 'Negative zero'],
 		['TOML date', 'day = 2026-10-12', 'toml', 'json', 'Dates and non-plain objects'],
+		['TOML final array comment', 'a=[1 #', 'toml', 'json', 'Invalid TOML'],
+		['TOML final table comment', 'a={b=1 #', 'toml', 'json', 'Invalid TOML'],
+		['deep YAML', '['.repeat(5000) + '1' + ']'.repeat(5000), 'yaml', 'json', 'Maximum call stack size exceeded'],
 	]) it(`blocks ${c[0]} and keeps the note`, async () => { await select(c[1]!); await open(c[2], c[3]); const s = await state(); expect(s!.status).toContain(c[4]); expect(s!.disabled).toBe(true); expect(await text()).toBe(c[1]); });
+	it('converts TOML after thousands of comments', async () => {
+		const input = '# comment\n'.repeat(8000) + 'name = "Ada"';
+		await select(input); await open('toml', 'json');
+		expect(JSON.parse((await state())!.preview)).toEqual({ name: 'Ada' });
+		expect((await state())!.disabled).toBe(false); expect(await text()).toBe(input);
+	});
 	it('Cancel keeps the source byte-identical', async () => { const input = 'name: Ada\n# keep this\n'; await select(input); await open(); await browser.$('button=Cancel').click(); expect(await text()).toBe(input); });
 	it('blocks replacement after a source change', async () => {
 		await select('name: Ada'); await open(); await browser.executeObsidian(({ app }, id) => { const p = (app as unknown as { plugins: { plugins: Record<string, DataFormatConverterPlugin> } }).plugins.plugins[id]!; const m = [...p.modals][0] as ConversionModal; m.editor.setValue('name: Bea'); }, pluginId);
