@@ -1,6 +1,6 @@
 # Data Format Converter
 
-Data Format Converter converts selected YAML, JSON, or TOML data in an Obsidian note. Choose the source and target formats, inspect the preview, then confirm the replacement. The plugin checks the values before it writes the result. The selection command, parse checks, preview, and replacement are free.
+Data Format Converter converts selected YAML, JSON, or TOML data in an Obsidian note. Choose the source and target formats, inspect the preview, then confirm the replacement. The plugin checks the values before it writes the result.
 
 Use it when a note contains a small configuration example that you need in a different format. It operates on selected data, not on a complete Markdown document. Select the contents of a code block without its opening and closing fences. You choose the format; the plugin does not infer it from the note.
 
@@ -70,7 +70,9 @@ For a first check, select YAML with `name: Ada` and `count: 3` on separate lines
 
 ## Settings
 
-The settings tab contains a short conversion description and the GitHub Sponsors controls. Formats are selected in the conversion modal and start from the defaults when you open a new modal. There is no saved schema path, automatic conversion, background note scan, or default command hotkey. Add a hotkey in Obsidian if you need one.
+After a minor or major update, this plugin opens one What's new tab in the background. The tab and settings card suggest other NoteMods plugins and Zovo Chat and link to notemods.com for feedback ([privacy](https://notemods.com/privacy/)). The tab sends no data. Turn the tab off in Settings.
+
+The settings tab contains a short conversion description and the GitHub Sponsors controls. There is no saved schema path, automatic conversion, background note scan, or default command hotkey. Add a hotkey in Obsidian if you need one.
 
 ## FAQ
 

@@ -4,11 +4,15 @@ import { createGitHubSponsors } from './license/github-obsidian';
 import { bindPro, isPro, resetPro, SPONSORS, proTitle } from './pro';
 import { ConverterSettingTab } from './settings';
 import { BatchModal, ConversionModal, SchemaModal } from './ui';
+import { setupHello } from './hello/index';
+import WHATS_NEW from './whats-new.json';
 
 export default class DataFormatConverterPlugin extends Plugin {
 	pro: SponsorsManager | null = null;
 	readonly modals = new Set<ConversionModal | SchemaModal | BatchModal>();
 	async onload(): Promise<void> {
+		// First: "What's new" reads its state before the settings load (packages/hello). It does not wait.
+		setupHello(this, WHATS_NEW);
 		const pro = createGitHubSponsors(this.app, this.manifest.id, SPONSORS, this);
 		pro.init();
 		this.pro = pro;
