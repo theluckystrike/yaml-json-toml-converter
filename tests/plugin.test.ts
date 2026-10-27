@@ -17,7 +17,7 @@ function fixture(text = 'name: Ada') {
 	const editor = { getValue: () => value, getSelection: () => value, getCursor: (side: string) => ({ line: 0, ch: side === 'from' ? 0 : value.length }), getRange: () => value, replaceRange: (out: string) => { value = out; } } as unknown as Editor;
 	return { plugin, editor, text: () => value, set: (s: string) => { value = s; } };
 }
-function pro(enabled: boolean) { bindPro({ isPro: () => enabled, onChange: () => () => undefined } as never); }
+function pro(enabled: boolean) { bindPro({ isPro: () => enabled, getState: () => ({ status: 'signed-out', lastAttemptAt: 0 }), hasToken: () => false, config: { sponsorLogin: 'theluckystrike' }, onChange: () => () => undefined } as never); }
 
 describe('modal safety', () => {
 	it('cancel closes without an editor write', () => { const f = fixture(); const m = new ConversionModal(f.plugin, f.editor); m.onOpen(); m.onClose(); expect(f.text()).toBe('name: Ada'); expect(f.plugin.modals.size).toBe(0); });

@@ -1,5 +1,11 @@
 # yaml-json-toml-converter
 
+## 1.1.1
+
+### Patch Changes
+
+- The Data Format Converter notice for a Pro feature now has a Sponsor on GitHub button.
+
 ## 1.1.0
 
 ### Minor Changes

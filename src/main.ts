@@ -1,7 +1,7 @@
 import { Notice, Plugin, type Editor } from 'obsidian';
 import type { SponsorsManager } from './license/index';
 import { createGitHubSponsors } from './license/github-obsidian';
-import { bindPro, isPro, resetPro, SPONSORS, proTitle } from './pro';
+import { bindPro, isPro, resetPro, SPONSORS, proTitle, proNotice } from './pro';
 import { ConverterSettingTab } from './settings';
 import { BatchModal, ConversionModal, SchemaModal } from './ui';
 import { setupHello } from './hello/index';
@@ -34,7 +34,7 @@ export default class DataFormatConverterPlugin extends Plugin {
 	}
 	requirePro(): boolean {
 		if (isPro()) return true;
-		new Notice('Pro is required for this feature. Sponsor on GitHub, then sign in from the plugin settings.');
+		proNotice('Pro is required for this feature.');
 		return false;
 	}
 	onunload(): void {
