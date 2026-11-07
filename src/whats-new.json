@@ -1,8 +1,9 @@
 {
 	"id": "yaml-json-toml-converter",
 	"name": "Data Format Converter",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"changes": [
+		"The Pro notice of Data Format Converter now says that one payment turns on Pro in every NoteMods plugin.",
 		"The Data Format Converter notice for a Pro feature now has a Sponsor on GitHub button."
 	],
 	"tip": "Select code block contents without the fences before running the convert command.",

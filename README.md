@@ -40,7 +40,7 @@ After formatting, the plugin parses the output and compares its data with the in
 
 ### Validate a local JSON Schema (Pro)
 
-Select JSON data and run “Validate selected JSON against a local schema (Pro)”. Enter the schema path relative to the vault root. The plugin reads that local file and shows validation errors with JSON Pointer paths. It does not replace the selection.
+Select JSON data and run “Validate selected JSON against a local schema (Pro)”. Enter the schema path relative to the vault root. It reads the file and shows validation errors with JSON Pointer paths. It does not replace the selection.
 
 The validator supports Draft-07 rules through the bundled jsonschema library. References must be local fragments beginning with `#`; references to another file or a remote service are blocked. Format keywords are skipped. For example, a string with an email format rule is checked as a string, but its address syntax is not checked. Unsupported validation keywords report an error.
 
@@ -91,6 +91,8 @@ The settings tab contains a short conversion description and the GitHub Sponsors
 ## Payment, account and network
 
 The core features are free. Pro features need a GitHub Sponsors sponsorship of theluckystrike: $5 a month or more, or $15 once. A total payment of $15 meets the payment requirement for Pro without further payment. Sign-in and the checks below still apply. Your notes stay readable and editable with or without Pro.
+
+[One payment turns on Pro in every NoteMods plugin](https://notemods.com/pro/).
 
 GitHub handles the payment. Sponsor at https://github.com/sponsors/theluckystrike?frequency=one-time&metadata_source=yaml-json-toml-converter. You need no account for the free features. Pro needs the GitHub account that sponsors.
 
